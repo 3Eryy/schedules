@@ -6,39 +6,33 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Responses\LoginResponse;
 
 
 class LoginController extends Controller
 {
-    public function index()
-    {
-        return view('auth.user-login');
-    }
+    // public function login(Request $request)
+    // {
+    //     $request->validate([
+    //         'email'    => 'required|email',
+    //         'password' => 'required'
+    //     ]);
 
-    // LOGIN USER
-    public function login(Request $request)
-    {
-        $request->validate([
-            'email'    => 'required|email',
-            'password' => 'required'
-        ]);
+    //     $user = User::where('email', $request->email)->first();
 
-        $user = User::where('email', $request->email)->first();
+    //     if (!$user || !Hash::check($request->password, $user->password)) {
+    //         return back()->with('error', 'Email atau password salah');
+    //     }
 
-        if (!$user || !Hash::check($request->password, $user->password)) {
-            return back()->with('error', 'Email atau password salah');
-        }
+    //     Auth::login($user);
 
-        Auth::login($user);
-
-        return redirect('/user/dashboard');
-    }
+    //     return (new LoginResponse($request))->toResponse();
+    // }
 
 
-    // LOGOUT
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/user/login');
-    }
+    // public function logout()
+    // {
+    //     Auth::logout();
+    //     return redirect('/user/login');
+    // }
 }

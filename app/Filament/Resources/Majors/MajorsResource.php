@@ -35,6 +35,11 @@ class MajorsResource extends Resource
                     ->label('Kode Jurusan')
                     ->required()
                     ->maxLength(50),
+
+                TextInput::make('max_pararel')
+                    ->label('Jumlah Pararel')
+                    ->required()
+                    ->maxLength(50),
             ]);
     }
 

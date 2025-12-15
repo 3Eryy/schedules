@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
 
 class Student extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'kelas_id'];
+    use InteractsWithMedia;
+    protected $fillable = ['name', 'kelas_id', 'photo', 'nis'];
 
     public function kelas()
     {

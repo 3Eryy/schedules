@@ -9,6 +9,7 @@ use Filament\Actions\DeleteAction;
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Tables\Columns\ImageColumn;
 
 class UsersTable
 {
@@ -16,6 +17,11 @@ class UsersTable
     {
         return $table
             ->columns([
+                ImageColumn::make('photo')
+                    ->label('Foto')
+                    ->defaultImageUrl(url('/images/default-avatar.png'))
+                    ->circular()
+                    ->size(40),
                 TextColumn::make('name')->sortable()->searchable(),
                 TextColumn::make('email')->sortable()->searchable(),
                 TextColumn::make('address')->sortable()->searchable(),

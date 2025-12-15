@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Majors extends Model
 {
     use HasFactory;
-    protected $fillable = ['name', 'code'];
+    protected $fillable = ['name', 'code', 'max_pararel'];
 
     public function kelas() {
         return $this->hasMany(Kelas::class, 'majors_id');
