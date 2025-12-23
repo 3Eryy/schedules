@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
                 'filament.admin',
             ])
             ->colors([
-                'primary' => Color::Amber,
+                'primary' => Color::Blue,
             ])
             ->brandName('Presensi SMKN 1 Sukorejo | Admin')
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\Filament\Resources')
@@ -44,6 +44,10 @@ class AdminPanelProvider extends PanelProvider
             ->widgets([
                 AccountWidget::class,
                 FilamentInfoWidget::class,
+            ])
+            ->navigationGroups([
+                'Universal',
+                'Histories',
             ])
             ->middleware([
                 EncryptCookies::class,

@@ -9,6 +9,11 @@
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
         @keyframes float {
 
             0%,
@@ -168,14 +173,14 @@
                 <div class="space-y-6 opacity-0 animate-slideInLeft p-8 rounded-2xl">
                     <div class="inline-block">
                         <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-full text-sm font-semibold">
-                            Sistem Absensi Digital
+                            Sistem Presensi Digital
                         </span>
                     </div>
                     <h1 class="text-4xl lg:text-5xl font-bold text-white leading-tight">
                         <div id="typewriter-text"></div>
                     </h1>
                     <p class="text-lg text-white leading-relaxed">
-                        Sistem presensi dan jurnal mengajar digital untuk SMKN 1 Sukorejo. Absen cepat, jurnal praktis,
+                        Sistem absensi dan jurnal mengajar digital untuk SMKN 1 Sukorejo. Absen cepat, jurnal praktis,
                         rekap otomatis!
                     </p>
                 </div>
@@ -402,25 +407,26 @@
         const text = "Kelola Absensi & Jurnal\nLebih Mudah";
         const speed = 50;
         let i = 0;
-        
+
         function typeWriter() {
             if (i < text.length) {
                 const char = text.charAt(i);
                 const element = document.getElementById("typewriter-text");
-                
+
                 if (char === '\n') {
                     element.innerHTML += '<br>';
                 } else if (i > text.indexOf('\n')) {
-                    element.innerHTML += `<span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">${char}</span>`;
+                    element.innerHTML +=
+                        `<span class="bg-gradient-to-r from-blue-500 to-purple-600 bg-clip-text text-transparent">${char}</span>`;
                 } else {
                     element.innerHTML += char;
                 }
-                
+
                 i++;
                 setTimeout(typeWriter, speed);
             }
         }
-        
+
         document.addEventListener('DOMContentLoaded', typeWriter);
     </script>
 </body>

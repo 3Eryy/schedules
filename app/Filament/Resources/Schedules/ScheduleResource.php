@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Schedules;
 
 use BackedEnum;
+use UnitEnum;
 use App\Models\User;
 use App\Models\Schedule;
 use App\Models\Subjects;
@@ -10,13 +11,11 @@ use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\TimePicker;
 use App\Filament\Resources\Schedules\Pages\EditSchedule;
 use App\Filament\Resources\Schedules\Pages\ListSchedules;
 use App\Filament\Resources\Schedules\Pages\CreateSchedule;
-use App\Filament\Resources\Schedules\Schemas\ScheduleForm;
 use App\Filament\Resources\Schedules\Tables\SchedulesTable;
 
 class ScheduleResource extends Resource
@@ -24,6 +23,8 @@ class ScheduleResource extends Resource
     protected static ?string $model = Schedule::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-calendar-days';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Schedule';
 
@@ -76,7 +77,8 @@ class ScheduleResource extends Resource
                 Select::make('status')
                     ->label('Status jadwal')
                     ->options([
-                        'Terjadwal' => 'terjadwal'
+                        'Terjadwal' => 'terjadwal',
+                        'Terlaksana' => 'terlaksana'
                     ])
             ]);
     }

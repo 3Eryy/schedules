@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Classes;
 
 use BackedEnum;
+use UnitEnum;
 use App\Models\Kelas;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
@@ -19,6 +20,8 @@ class ClassResource extends Resource
     protected static ?string $model = Kelas::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-academic-cap';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Class';
 

@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Majors;
 
 use BackedEnum;
+use UnitEnum;
 use App\Models\Majors;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
@@ -11,7 +12,6 @@ use Filament\Forms\Components\TextInput;
 use App\Filament\Resources\Majors\Pages\EditMajors;
 use App\Filament\Resources\Majors\Pages\ListMajors;
 use App\Filament\Resources\Majors\Pages\CreateMajors;
-use App\Filament\Resources\Majors\Schemas\MajorsForm;
 use App\Filament\Resources\Majors\Tables\MajorsTable;
 
 class MajorsResource extends Resource
@@ -19,6 +19,8 @@ class MajorsResource extends Resource
     protected static ?string $model = Majors::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-squares-2x2';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Majors';
 

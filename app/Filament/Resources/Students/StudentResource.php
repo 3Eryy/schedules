@@ -3,11 +3,11 @@
 namespace App\Filament\Resources\Students;
 
 use BackedEnum;
+use UnitEnum;
 use App\Models\Student;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
-use Filament\Support\Icons\Heroicon;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Components\Section;
@@ -15,7 +15,6 @@ use Filament\Forms\Components\FileUpload;
 use App\Filament\Resources\Students\Pages\EditStudent;
 use App\Filament\Resources\Students\Pages\ListStudents;
 use App\Filament\Resources\Students\Pages\CreateStudent;
-use App\Filament\Resources\Students\Schemas\StudentForm;
 use App\Filament\Resources\Students\Tables\StudentsTable;
 use Livewire\Features\SupportFileUploads\TemporaryUploadedFile;
 
@@ -24,6 +23,8 @@ class StudentResource extends Resource
     protected static ?string $model = Student::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-identification';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Student';
 

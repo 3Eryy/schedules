@@ -3,7 +3,6 @@
 namespace App\Filament\User\Resources\Jadwals\Pages;
 
 use App\Filament\User\Resources\Jadwals\JadwalResource;
-use Filament\Actions\CreateAction;
 use Filament\Resources\Pages\ListRecords;
 
 class ListJadwals extends ListRecords
@@ -12,8 +11,6 @@ class ListJadwals extends ListRecords
 
     protected function getHeaderActions(): array
     {
-        return [
-            CreateAction::make(),
-        ];
+        return [];
     }
 }

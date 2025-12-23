@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Users;
 
 use BackedEnum;
+use UnitEnum;
 use App\Models\User;
 use Filament\Tables\Table;
 use Filament\Schemas\Schema;
@@ -22,6 +23,8 @@ class UsersResource extends Resource
     protected static ?string $model = User::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-users';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Users';
 

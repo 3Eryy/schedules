@@ -5,10 +5,10 @@ namespace App\Filament\Resources\Subjects;
 use App\Filament\Resources\Subjects\Pages\CreateSubjects;
 use App\Filament\Resources\Subjects\Pages\EditSubjects;
 use App\Filament\Resources\Subjects\Pages\ListSubjects;
-use App\Filament\Resources\Subjects\Schemas\SubjectsForm;
 use App\Filament\Resources\Subjects\Tables\SubjectsTable;
 use App\Models\Subjects;
 use BackedEnum;
+use UnitEnum;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Resource;
 use Filament\Schemas\Schema;
@@ -19,6 +19,8 @@ class SubjectsResource extends Resource
     protected static ?string $model = Subjects::class;
 
     protected static string|BackedEnum|null $navigationIcon = 'heroicon-o-book-open';
+
+    protected static UnitEnum|string|null $navigationGroup = 'Universal';
 
     protected static ?string $recordTitleAttribute = 'Subjects';
 
