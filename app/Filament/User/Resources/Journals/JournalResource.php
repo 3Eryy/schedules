@@ -8,7 +8,6 @@ use App\Models\Kelas;
 use App\Models\Journal;
 use App\Models\Schedule;
 use Filament\Tables\Table;
-use Illuminate\Support\Str;
 use Filament\Schemas\Schema;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Resource;
@@ -148,26 +147,28 @@ class JournalResource extends Resource
                 Section::make('Bukti Mengajar')
                     ->schema([
                         FileUpload::make('photo')
-                            ->disk('public')
-                            ->label('Foto Guru')
-                            ->image()
-                            ->directory('journals/photos') // Folder penyimpanan
-                            ->visibility('public') // atau 'private'
-                            ->maxSize(2048) // 2MB
-                            ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
-                            ->imageResizeMode('cover')
-                            ->imageCropAspectRatio('1:1') // Rasio 1:1
-                            ->imageResizeTargetWidth('300')
-                            ->imageResizeTargetHeight('300')
-                            ->panelAspectRatio('1:1') // Preview ratio
-                            ->panelLayout('integrated')
-                            ->uploadingMessage('Mengunggah foto...')
-                            ->uploadProgressIndicatorPosition('left')
-                            ->helperText('Maksimal 2MB. Format: JPG, PNG')
-                            ->getUploadedFileNameForStorageUsing(
-                                fn(TemporaryUploadedFile $file): string =>
-                                'journal-' . Str::uuid() . '.' . $file->getClientOriginalExtension()
-                            )
+                                    ->label('Foto Journal')
+                                    ->image()
+                                    ->directory('journals/photos')
+                                    ->visibility('public')
+                                    ->maxSize(2048)
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/jpg'])
+                                    ->imageResizeMode('cover')
+                                    ->imageCropAspectRatio('1:1')
+                                    ->imageResizeTargetWidth(300)
+                                    ->imageResizeTargetHeight(300)
+                                    ->panelAspectRatio('1:1')
+                                    ->panelLayout('integrated')
+                                    ->uploadingMessage('Mengunggah foto...')
+                                    ->uploadProgressIndicatorPosition('left')
+                                    ->helperText('Maksimal 2MB. Format: JPG, PNG')
+                                    ->getUploadedFileNameForStorageUsing(
+                                        fn (TemporaryUploadedFile $file): string => 
+                                            'journal-' .
+                                            pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME) .
+                                            '-' . time() .
+                                            '.' . $file->getClientOriginalExtension()
+                                    ),
                     ])
                     ->collapsible()
                     ->collapsed(fn($operation) => $operation === 'edit'),

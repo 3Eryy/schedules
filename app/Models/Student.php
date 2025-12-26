@@ -10,11 +10,10 @@ class Student extends Model
 {
     use HasFactory;
     use InteractsWithMedia;
-    protected $fillable = ['name', 'kelas_id', 'photo', 'nis'];
+    protected $fillable = ['name', 'kelas_id', 'nis'];
 
     public function kelas()
     {
         return $this->belongsTo(Kelas::class, 'kelas_id');
     }
-
 }
