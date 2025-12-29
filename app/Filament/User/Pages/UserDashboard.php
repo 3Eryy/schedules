@@ -8,7 +8,7 @@ use BackedEnum;
 class UserDashboard extends Page
 {
     protected static string | BackedEnum | null $navigationIcon = 'heroicon-o-home';
-    protected static ?string $navigationLabel = 'Dashboard';
+    protected static ?string $navigationLabel = 'Teacher Dashboard';
     protected static ?int $navigationSort = 1;
 
     protected function getHeaderWidgets(): array

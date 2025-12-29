@@ -12,7 +12,6 @@ use Filament\Schemas\Components\Section;
 use Filament\Forms\Components\DatePicker;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Infolists\Components\TextEntry;
-use AlperenErsoy\FilamentExport\Actions\FilamentExportBulkAction;
 
 
 class AbsenceHistoriesTable
@@ -21,8 +20,8 @@ class AbsenceHistoriesTable
     {
         return $table
             ->columns([
-                TextColumn::make('schedule.kelas.full_class')->label('Kelas')->sortable(),
-                TextColumn::make('schedule.subject.name')->label('Mapel')->sortable(),
+                TextColumn::make('schedule.kelas.full_class')->label('Kelas')->sortable()->searchable(),
+                TextColumn::make('schedule.subject.name')->label('Mapel')->sortable()->searchable(),
                 TextColumn::make('date')
                     ->label('Hari')
                     ->date('Y-m-d')
@@ -94,17 +93,12 @@ class AbsenceHistoriesTable
                             );
                     }),
 
-                SelectFilter::make('subject')
-                    ->label('Mata Pelajaran')
-                    ->relationship(
-                        'schedule.subject',
-                        'name'
-                    ),
-                SelectFilter::make('guru')
-                    ->label('Guru')
-                    ->relationship(
-                        'schedule.user',
-                        'name'
+                SelectFilter::make('kelas_id')
+                    ->label('Nama Kelas')
+                    ->options(
+                        \App\Models\Kelas::with('majors')     // supaya majors bisa dipakai di accessor
+                            ->get()
+                            ->pluck('full_class', 'id')       // gunakan accessor
                     )
             ])
             ->recordActions([
@@ -191,7 +185,6 @@ class AbsenceHistoriesTable
             ])
             ->toolbarActions([
                 BulkActionGroup::make([
-                    FilamentExportBulkAction::make('export')->defaultFormat('pdf'),
                     DeleteBulkAction::make(),
                 ]),
             ]);
